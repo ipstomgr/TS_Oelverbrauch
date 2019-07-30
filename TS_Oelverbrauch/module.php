@@ -1,4 +1,4 @@
-<?
+<?php
 
 	class TS_Oel extends IPSModule
 	{
@@ -22,7 +22,7 @@
 			//Never delete this line!
 			parent::ApplyChanges();
 
-$sid_berechnung =			$this->RegisterScript("_berechnung", "_berechnung", '<?
+$sid_berechnung =			$this->RegisterScript("_berechnung", "_berechnung", '<?php
 $Parent           						= IPS_GetParent($_IPS[\'SELF\']);
 $ParentModul								= IPS_GetObject($Parent);
 
@@ -115,10 +115,10 @@ switch ($_IPS["SENDER"])                                     // Ursache (Absende
 	}
   break;
 }
-?>');
+');
 IPS_SetHidden($sid_berechnung,true);
 
-$sid_Laufzeit_gesammt =			$this->RegisterScript("Laufzeit_gesammt", "Laufzeit_gesammt", '<?
+$sid_Laufzeit_gesammt =			$this->RegisterScript("Laufzeit_gesammt", "Laufzeit_gesammt", '<?php
 $Parent           						= IPS_GetParent($_IPS[\'SELF\']);
 $ParentModul								= IPS_GetObject($Parent);
 
@@ -151,10 +151,10 @@ switch ($_IPS["SENDER"])                                     // Ursache (Absende
 		SetValue($zaehler_heute_ID   , $laufzeit);    // neue Brennerlaufzeit Anzeige abspeichern
   break;
 }
-?>');
+');
 IPS_SetHidden($sid_Laufzeit_gesammt,true);
 
-$sid_Laufzeit_tag_reset=		$this->RegisterScript("Laufzeit_tag_reset", "Laufzeit_tag_reset", '<?
+$sid_Laufzeit_tag_reset=		$this->RegisterScript("Laufzeit_tag_reset", "Laufzeit_tag_reset", '<?php
 $Parent           						= IPS_GetParent($_IPS[\'SELF\']);
 $ParentModul								= IPS_GetObject($Parent);
 
@@ -164,10 +164,10 @@ $Zaehler_heute_ID    				= IPS_GetObjectIDByName(\'Zaehler_heute\', IPS_GetParen
 
  SetValue($Verbrauch_heute_ID ,0  );
  SetValue($Zaehler_heute_ID  ,0);
-?>');
+');
 IPS_SetHidden($sid_Laufzeit_tag_reset,true);
 
-$sid_Faktor_berechnen =			$this->RegisterScript("Faktor_berechnen", "Faktor_berechnen", '<?
+$sid_Faktor_berechnen =			$this->RegisterScript("Faktor_berechnen", "Faktor_berechnen", '<?php
 $faktor_ID  = IPS_GetObjectIDByName(\'faktor\', IPS_GetParent($_IPS[\'SELF\']));
 $verbrauch_pro_stunde_id  = IPS_GetObjectIDByName(\'Liter_Stunde\', IPS_GetParent($_IPS[\'SELF\']));
 //$eingabe_str = IPS_GetProperty(IPS_GetParent($_IPS[\'SELF\']), "Liter_Stunde");
@@ -175,7 +175,7 @@ $eingabe_str = GetValueString($verbrauch_pro_stunde_id);
 $verbrauch_pro_stunde = floatval($eingabe_str);
 $faktor = 3600 / $verbrauch_pro_stunde;
 SetValue($faktor_ID , $faktor);
-?>');
+');
 IPS_SetHidden($sid_Faktor_berechnen,true);
 	
 			$this->RegisterVariableFloat("Verbrauch", "Verbrauch", "~Water");
@@ -298,5 +298,3 @@ IPS_SetHidden($sid_Faktor_berechnen,true);
 
 	
 	}
-
-?>
